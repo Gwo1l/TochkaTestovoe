@@ -38,7 +38,6 @@ class Main {
     }
 
 
-
     private static Map<String, String> parseJsonToMap(String json) {
         Map<String, String> map = new HashMap<>();
         json = json.substring(1, json.length() - 1);
