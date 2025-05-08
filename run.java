@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Collections;
 
 
-class Main {
+public class Main {
     public static boolean checkCapacity(int maxCapacity, List<Map<String, String>> guests) {
         List<Event> events = new ArrayList<>();
         setEventsTimeline(events, guests);
@@ -89,37 +89,37 @@ class Main {
 
         scanner.close();
     }
-}
+    private static class Event implements Comparable<Event> {
+        private final LocalDate date;
+        private final boolean isCheckIn;
 
-
-class Event implements Comparable<Event> {
-    private final LocalDate date;
-    private final boolean isCheckIn;
-
-    public Event(LocalDate date, boolean isCheckIn) {
-        this.date = date;
-        this.isCheckIn = isCheckIn;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public boolean isCheckIn() {
-        return isCheckIn;
-    }
-
-    @Override
-    public int compareTo(Event o) {
-        int result = this.date.compareTo(o.getDate());
-        if (result == 0) {
-            if (o.isCheckIn()) {
-                return -1;
-            }
-            else {
-                return 1;
-            }
+        public Event(LocalDate date, boolean isCheckIn) {
+            this.date = date;
+            this.isCheckIn = isCheckIn;
         }
-        return result;
+
+        public LocalDate getDate() {
+            return date;
+        }
+
+        public boolean isCheckIn() {
+            return isCheckIn;
+        }
+
+        @Override
+        public int compareTo(Event o) {
+            int result = this.date.compareTo(o.getDate());
+            if (result == 0) {
+                if (o.isCheckIn()) {
+                    return -1;
+                }
+                else {
+                    return 1;
+                }
+            }
+            return result;
+        }
     }
 }
+
+
